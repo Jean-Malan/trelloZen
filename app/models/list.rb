@@ -1,5 +1,6 @@
 class List < ApplicationRecord
 require 'ostruct'
+include HTTParty
 
   def self.get_all_trello_data
 
@@ -54,19 +55,11 @@ require 'ostruct'
 
 
   def self.register_board_webhook(api_token, api_key, boards)
-
-    begin
-       RestClient::Request.execute(
-        :method => :post,
-        :url => "https://api.trello.com/1/tokens/#{api_token}/webhooks/?key=#{api_key}",
-        :data => { key: "#{api_key}",
-                callbackURL: "https://e2ba7cdb.ngrok.io/",
-                idModel: "#{boards}",
-                description: "My first webhook"  }.to_json,
-        :headers => {:accept => :json}) 
-    rescue RestClient::ExceptionWithResponse => e
-     return true 
-    end
-    return true
+    address = Trellozen::Application.credentials.ngrok_address
+    HTTParty.post("https://api.trello.com/1/tokens/#{api_token}/webhooks/?key=#{api_key}", :body => { :subject => "#{api_key}", :callbackURL => "#{address}", :idModel => "#{boards}", :description => 'This is the description for the problem'}.to_json, :headers => { 'Content-Type' => 'application/json' } )
+    # rescue RestClient::ExceptionWithResponse => e
+    #  return true 
+    # end
+    # return true
   end
 end

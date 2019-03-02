@@ -7,6 +7,7 @@ gem 'webpacker', '~> 3.5', '>= 3.5.5'
 gem 'pry'
 gem 'rest-client'
 gem "font-awesome-rails"
+gem 'httparty'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

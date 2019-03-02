@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
+    binding.pry
     data = List.get_all_trello_data
     @boards = data[0]
     @lists = data[1]
@@ -25,7 +26,8 @@ class ListsController < ApplicationController
     move = List.move_card(card_id, list_id)
   end
 
-  def get_updates
+  def get_updates(data)
+    binding.pry
   end
 
 end
