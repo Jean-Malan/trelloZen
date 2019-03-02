@@ -1,20 +1,8 @@
 <template>
 <div class="container">
+  <nav></nav>
     <draggable v-model="lists" :options="{group: 'lists'}" class='row dragArea' style="margin-left:5%">
       <lists v-for="(list, index) in lists" :cards="cards" :list="list"></lists>
-
-      <div v-if="newList == false">
-        <div class='col-md-3 card card-body fix' style="width: 1050px; background-color:rgba(0, 0, 0, 0.1);" > Add a list ... </div>
-      </div>
-      <div v-else>
-        <div class='col-md-3 card card-body fix' style="width: 1050px; background-color:rgba(0, 0, 0, 0.2);" >
-          <input v-model="message" ref="message" placeholder="List name" class="form-control" style="background-color: #ededed">
-          <button class="btn btn-danger">Save</button>
-          <a @click="newList=false"> Cancel </a>
-        </div>
-      </div>
-
-
     </draggable>
   </div>
 </template>

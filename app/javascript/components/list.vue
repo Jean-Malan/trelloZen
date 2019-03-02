@@ -1,13 +1,13 @@
 <template>
 
-  <div class='col-md-3 align-top card card-body fix' style="box-shadow: none;background-color: rgba(0,0,0,0);min-height: 1000px; min-width: 500px">
-    <div class="inline row" style="margin-top: -1%;background: #f3f3f3;padding: 5%;border-radius: 5px;">
-      <strong> <p style="margin-top:-100%color:grey;font-size:18px;font-weight: bold;">{{list.table.name}}</p></strong>
+  <div :data-list="list.table.id" class='col-md-3 align-top card card-body fix' style="box-shadow: none;background-color: rgba(0,0,0,0);min-height: 1000px; min-width: 500px">
+    <div class="inline row" style="margin-top: -1%;background: #f3f3f3;padding: 3%;border-radius: 5px;">
+      <strong> <p style="text-align: center;margin-top:-100%color:grey;font-size:22px;font-weight: bold;">{{list.table.name}}</p></strong>
     </div>  
     <hr />
 
     <draggable  :options="{group: 'cards'}" class='dragArea' @end="cardMoved" style="margin-left: 20px !important;max-height: 65%;">
-      <card @print-card-name="printCardName" v-for="(card, index) in card_list" v-if="card.table.idList == list.table.id" :card="card" > </card>   
+      <card @print-card-name="printCardName" v-for="(card, index) in card_list" v-if="card.table.idList == list.table.id" :card="card" :list="list.table.id" > </card>   
     </draggable>
 
     <div class="element1">
@@ -92,18 +92,18 @@ export default {
     },
 
     cardMoved: function(event) {
-      console.log("hi");
-      console.log(event);
-      var new_column = event.to.offsetParent.dataset.index;
-      var card_id = event.clone.dataset.id;
-      var new_position = event.newIndex + 1;
+      console.log(event.to.parentNode.dataset.list);
+      console.log(event.item.dataset.id);
+      // var new_column = event.to.offsetParent.dataset.index;
+      var card_id = event.item.dataset.id;
+      var list_id = event.to.parentNode.dataset.list;
 
       var data = new FormData();
-      data.append("card[listing_id]", new_column);
-      data.append("card[position]", new_position);
+      data.append("card[card_id]", card_id);
+      data.append("card[list_id]", list_id);
 
       Rails.ajax({
-        url: "/cards/" + card_id + "/move",
+        url: "/move_card",
         type: "PATCH",
         data: data,
         dataType: "json"
@@ -122,3 +122,26 @@ export default {
 
 <style scoped>
 </style>
+
+// trello_secret: f2396a3788ebadc88855e8d22a28a6e42db09b67defcbf5e50effef4c619d400
+// trello_token: 4d22e16cb530b809520d3ee38d72590c5a67c1e8aff43b279e7af9f29508b0e9
+// trello_key: cd3c6a6e25d03dd94768c6f6eea13a47
+
+
+// curl -X POST -H “Content-Type: application/json” \
+// https://api.trello.com/1/tokens/4d22e16cb530b809520d3ee38d72590c5a67c1e8aff43b279e7af9f29508b0e9/webhooks/ \
+// -d ‘{
+//   “key”: “cd3c6a6e25d03dd94768c6f6eea13a47”,
+//   “callbackURL”: “http://4f4ba129.ngrok.io”,
+//   “idModel”:”4d5ea62fd76aa1136000000c”,
+//   “description”: “My first webhook”  
+// }’
+
+//  curl -X POST -H "Content-Type: application/json" \
+//  https://api.trello.com/1/tokens/4d22e16cb530b809520d3ee38d72590c5a67c1e8aff43b279e7af9f29508b0e9/webhooks/ \
+//  -d '{
+//    "key": "cd3c6a6e25d03dd94768c6f6eea13a47",
+//    "callbackURL": "https://4f4ba129.ngrok.io",
+//    "idModel":"4d5ea62fd76aa1136000000c",
+//    "description": "My first webhook"  
+//  }'

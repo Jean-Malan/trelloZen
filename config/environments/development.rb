@@ -2,7 +2,8 @@ Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.
-
+ 
+  
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -52,6 +53,9 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.web_console.whitelisted_ips = '107.23.149.70'
+  config.web_console.whitelisted_ips = '54.152.166.250'
+  config.web_console.whitelisted_ips = '107.23.104.115'
+  config.web_console.whiny_requests = false
 
   config.read_encrypted_secrets = true
 
