@@ -122,26 +122,3 @@ export default {
 
 <style scoped>
 </style>
-
-// trello_secret: f2396a3788ebadc88855e8d22a28a6e42db09b67defcbf5e50effef4c619d400
-// trello_token: 4d22e16cb530b809520d3ee38d72590c5a67c1e8aff43b279e7af9f29508b0e9
-// trello_key: cd3c6a6e25d03dd94768c6f6eea13a47
-
-
-// curl -X POST -H “Content-Type: application/json” \
-// https://api.trello.com/1/tokens/4d22e16cb530b809520d3ee38d72590c5a67c1e8aff43b279e7af9f29508b0e9/webhooks/ \
-// -d ‘{
-//   “key”: “cd3c6a6e25d03dd94768c6f6eea13a47”,
-//   “callbackURL”: “http://4f4ba129.ngrok.io”,
-//   “idModel”:”4d5ea62fd76aa1136000000c”,
-//   “description”: “My first webhook”  
-// }’
-
-//  curl -X POST -H "Content-Type: application/json" \
-//  https://api.trello.com/1/tokens/4d22e16cb530b809520d3ee38d72590c5a67c1e8aff43b279e7af9f29508b0e9/webhooks/ \
-//  -d '{
-//    "key": "cd3c6a6e25d03dd94768c6f6eea13a47",
-//    "callbackURL": "https://4f4ba129.ngrok.io",
-//    "idModel":"4d5ea62fd76aa1136000000c",
-//    "description": "My first webhook"  
-//  }'
