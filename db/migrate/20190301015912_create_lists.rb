@@ -4,7 +4,7 @@ class CreateLists < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :closed
       t.string :idnboard
-      t.float :pos
+      t.float :idnboard
       t.boolean :subscribed
       t.integer :softlimit
 
