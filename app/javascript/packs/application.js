@@ -8,7 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from "vue/dist/vue.esm"
-import App from "../app.vue"
 import List from "../components/list.vue"
 import Index from "../components/index.vue"
 

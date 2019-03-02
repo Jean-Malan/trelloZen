@@ -25,5 +25,4 @@ class ListsController < ApplicationController
     move = List.move_card(card_id, list_id)
   end
 
-
 end
