@@ -1,7 +1,7 @@
 <template>
  <div class="card card-body" :data-id="card.table.id" :parentId="card.table.idList" style="margin-top:10px;margin-top: 10px;min-height: 120px;border-left-style: solid;border-left-width: 10px;">
   <div class="to-do-card-label">
-    <p style="position:overlay; margin-left: 50%;padding-top: 0%; font-size: 1em;width: 1000%;"><strong>Card Name: </strong> {{card.table.id}}<br></p>
+    <p style="position:overlay; margin-left: 50%;padding-top: 0%; font-size: 1em;width: 1000%;"><strong>Card Name: </strong> {{card.table.name}}<br></p>
   </div>
 </div>
 

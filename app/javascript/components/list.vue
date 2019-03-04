@@ -61,18 +61,13 @@ export default {
         data: data,
         dataType: "json",
         success: data => {
-          // const index = window.store.lists.findIndex((item) => item.id == this.listing_id);
           console.log(data);
           window.store.cards.push({
             table: { name: this.message, idList: this.listing_id }
           });
           this.message = "";
           this.editing = false;
-          // window.store.cards.push();
-          // var cardIndex = window.store.cards.length - 1;
-          // window.store.cards[cardIndex].table.idList = this.listing_id;
-          // window.store.cards[cardIndex].table.name = this.message;
-          // this.message = "";
+          window.location = "/";
         }
       });
     },
