@@ -25,4 +25,15 @@ class ListsController < ApplicationController
     move = List.move_card(card_id, list_id)
   end
 
+  def handle_webhook
+    if params[:model].present? && params[:model][:id].present?
+      card_actions(params[:model][:id])
+    end
+   head :ok
+  end
+
+  def card_actions(id)
+    puts List.get_card_activity(id)
+  end
+
 end
