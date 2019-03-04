@@ -31,4 +31,11 @@ trello_token: xxxxxx
 ngrok_addres: xxxxx
 
 
+## Task D: Questions
+
+How long did this assignment take you and where did you spend your time?
+-  7-8 hours, most of the time spent was configuring the webhooks. 
+
+What would you do differently or improve in your solution?
+- I would have looked for an alternative to rails as it is a bit heavy for a lightweight application like this. 
 
